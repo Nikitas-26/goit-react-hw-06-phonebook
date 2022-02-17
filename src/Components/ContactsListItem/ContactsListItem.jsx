@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
-const ContactsListItem = ({ filter, removeName }) => {
+import {connect} from 'react-redux';
+import {removeContacts} from '../../redux/contacts/contactsAction';
+const ContactsListItem = ({ filter, removeContacts }) => {
   return (
     <>
       {filter.map((contact) => (
@@ -10,7 +12,7 @@ const ContactsListItem = ({ filter, removeName }) => {
           <button
             type="button"
             onClick={(e) => {
-              removeName(contact.name);
+              removeContacts(contact.name);
             }}
           >
             Delete
@@ -31,4 +33,9 @@ ContactsListItem.prototypes = {
     })
   ).isRequired,
 };
-export default ContactsListItem;
+
+const mapDispatchToProps= {
+  removeContacts,
+}
+
+export default connect(null,mapDispatchToProps)(ContactsListItem);
