@@ -1,10 +1,14 @@
-import PropTypes from 'prop-types';
-const FilterItems = ({filter,onInputValue}) => {
-    return ( <><input onChange={onInputValue} name="filter" value={filter}>
+
+import { connect} from 'react-redux';
+import {setFilter} from '../../redux/contacts/contactsAction';
+const FilterItems = ({setFilter}) => {
+    return ( <><input onChange={(e)=>{
+        const {value} = e.target;
+        setFilter(value)
+    }} name="filter">
     </input></> );
 }
-FilterItems.propTypes = {
-    filter: PropTypes.string.isRequired,
-    onInputValue: PropTypes.func.isRequired
+const mapDispatchToProps ={ 
+    setFilter: setFilter
 }
-export default FilterItems;
+export default connect(null,mapDispatchToProps)(FilterItems) ;

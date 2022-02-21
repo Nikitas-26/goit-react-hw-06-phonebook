@@ -12,7 +12,7 @@ const ContactsListItem = ({ filter, removeContacts }) => {
           <button
             type="button"
             onClick={(e) => {
-              removeContacts(contact.name);
+              removeContacts(contact.id);
             }}
           >
             Delete
